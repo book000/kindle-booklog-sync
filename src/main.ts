@@ -18,6 +18,7 @@ const loginToBooklog = (): string[] => {
     followRedirects: false,
     headers: { Referer: url },
     payload: {
+      service: "booklog",
       account: booklogId,
       password: booklogPassword
     }
@@ -30,8 +31,8 @@ const loginToBooklog = (): string[] => {
   }
 
   const cookies = headers['Set-Cookie'] === 'string'
-      ? [headers['Set-Cookie']]
-      : headers['Set-Cookie']
+    ? [headers['Set-Cookie']]
+    : headers['Set-Cookie']
 
   for (let i = 0; i < cookies.length; i++) {
     cookies[i] = cookies[i].split(';')[0]
